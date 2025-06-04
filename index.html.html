@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Menu Dia dos Namorados 💖</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: url('https://i.pinimg.com/564x/b8/6d/27/b86d27ffecc80649f3958b5500e3eef1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+    margin: 0;
+    color: #fff;
+  }
+  h2, h3 {
+    text-align: center;
+    color: #fff;
+  }
+  .step {
+    display: none;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  .step.active {
+    display: block;
+  }
+  .item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+  .item label {
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    margin-right: 15px;
+    object-fit: cover;
+  }
+  .descricao-sobremesa {
+    margin-left: 75px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
+    color: #ffdddd;
+    display: none;
+  }
+  button, .btn-whatsapp {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, #ff6f91, #ff9472);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.3s;
+    cursor: pointer;
+  }
+  button:hover, .btn-whatsapp:hover {
+    transform: scale(1.03);
+    background: linear-gradient(45deg, #ff5470, #ff9472);
+  }
+  button:active, .btn-whatsapp:active {
+    transform: scale(0.97);
+  }
+  .btn-whatsapp {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    display: none;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Menu Dia dos Namorados 💘</h2>
+
+<form id="pedidoForm">
+
+  <!-- Etapa 1 -->
+  <div class="step active" id="step1">
+    <h3>1️⃣ Entrada</h3>
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/19.jpg" alt="Tarta de Salmão" />
+      <label><input type="radio" name="entrada" value="Tarta de Salmão" /> Tarta de Salmão</label>
+    </div>
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/18.jpg" alt="Ceviche" />
+      <label><input type="radio" name="entrada" value="Ceviche" /> Ceviche</label>
+    </div>
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/10.jpg" alt="Camarão Crocante" />
+      <label><input type="radio" name="entrada" value="Camarão Crocante" /> Camarão Crocante</label>
+    </div>
+    <button type="button" onclick="nextStep(1)">Próximo ➡️</button>
+  </div>
+
+  <!-- Etapa 2 -->
+  <div class="step" id="step2">
+    <h3>2️⃣ Temaki</h3>
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/3.jpg" alt="Temaki Hot Salmão" />
+      <label><input type="checkbox" name="sushi" value="Temaki Hot Salmão" /> Temaki Hot Salmão</label>
+    </div>
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/8.jpg" alt="Temaki Salmão Filadélfia" />
+      <label><input type="checkbox" name="sushi" value="Temaki Salmão Filadélfia" /> Temaki Salmão Filadélfia</label>
+    </div>
+    <div class="item">
+      <img src="https://img.freepik.com/psd-gratuitas/x-simbolo-isolado_23-2150500382.jpg" alt="Não quero" />
+      <label><input type="checkbox" name="sushi" value="Não quero" /> Não quero</label>
+    </div>
+    <button type="button" onclick="nextStep(2)">Próximo ➡️</button>
+  </div>
+
+  <!-- Etapa 3 -->
+  <div class="step" id="step3">
+    <h3>3️⃣ Combinados</h3>
+
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/135.jpg" alt="Harumaki Doce" />
+      <label>
+        <input type="radio" name="sobremesa" value="Harumaki Doce" onchange="mostrarDescricao(this)" />
+        Combinado Bare (20un)
+      </label>
+      <div class="descricao-sobremesa" id="desc-Harumaki Doce">
+        Sashimi salmão (4un): Uramaki Salmão Filadelfia (5un): Uramaki Salmão Furai (5un): Salmão Fila Joe (2un):  Nigiri Salmão (2un): baterá de salmão (2un)
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/139.jpg" alt="Mochi" />
+      <label>
+        <input type="radio" name="sobremesa" value="Mochi" onchange="mostrarDescricao(this)" />
+        Combinado Especial (37un)
+      </label>
+      <div class="descricao-sobremesa" id="desc-Mochi">
+        Sashimi salmão (4un): Sashimi de Atum (4un): Uramaki Avocado (5un): Uramaki Crumbs (5un): Hot Joe (5un): Tamago joe (2un): Joe trufado (2un): Brie Joe (2un): Camarão Roll (2un): Nigiri Barriga de Salmão (2un): Nigiri Salmão brie (2un)
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/138.jpg" alt="Sem sobremesa" />
+      <label>
+        <input type="radio" name="sobremesa" value="Sem sobremesa" onchange="mostrarDescricao(this)" />
+        Combinado Salmão (39un)
+      </label>
+      <div class="descricao-sobremesa" id="desc-Sem sobremesa">
+        Sashimi Salmão (8un): Uramaki Sensation (5un): Uramaki Salmão Filadelfia (5un): Uramaki Salmão Furai (5un): Hossomaki Salmão (4un): Baterá de Salmão (2un): Sashimi Furai Roll (2un): Salmão Fila Joe (2un): Nigiri Salmão (2un)
+      </div>
+	  </div>
+	  <div class="item">
+      <img src="https://files.menudino.com/cardapios/58389/221.jpg" alt="teste" />
+      <label>
+        <input type="radio" name="sobremesa" value="teste" onchange="mostrarDescricao(this)" />
+        Combinado Momentos (20un)
+      </label>
+      <div class="descricao-sobremesa" id="desc-teste">
+        Almond Joe (2un): Brie Joe (2un): Nigiri Barriga Salmão (2un): Crumbs (5un): Crocante (5un): Sashimi Tamago (4un)
+      </div>
+    </div>
+    <button type="button" onclick="nextStep(3)">Próximo ➡️</button>
+  </div>
+
+  <!-- Etapa 4 -->
+  <div class="step" id="step4">
+    <h3>4️⃣ Drink</h3>
+    <div class="item">
+      <img src="https://www.sumerbol.com.br/uploads/images/2018/02/caipirinha-de-vinho-1517489695.jpg" alt="Sakê" />
+      <label><input type="radio" name="drink" value="Sakê" /> Caipirinha de vinho</label>
+    </div>
+    <div class="item">
+      <img src="https://casadowhisky.com.br/wp-content/uploads/2024/07/como-tomar-whisky-com-energetico-1024x585.jpg" alt="Caipirinha" />
+      <label><input type="radio" name="drink" value="Caipirinha" /> Whisky + Energético</label>
+    </div>
+    <div class="item">
+      <img src="https://img.freepik.com/psd-gratuitas/x-simbolo-isolado_23-2150500382.jpg" alt="Sakê com Limão" />
+      <label><input type="radio" name="drink" value="Sakê com Limão" /> Não quero 😅</label>
+    </div>
+    <button type="button" onclick="nextStep(4)">Próximo ➡️</button>
+  </div>
+
+  <!-- Etapa 5 -->
+  <div class="step" id="step5">
+    <h3>5️⃣ Bebida</h3>
+    <div class="item">
+      <img src="https://images.tcdn.com.br/img/img_prod/1115696/coca_cola_zero_lata_350ml_31_1_6cc4e571bd3fe7bbbdba3b7f70c9060a.png" alt="Refrigerante" />
+      <label><input type="radio" name="bebida" value="Refrigerante" /> Coca Cola Zero</label>
+    </div>
+    <div class="item">
+      <img src="https://andinacocacola.vtexassets.com/arquivos/ids/158556-800-450?v=638664949839300000&width=800&height=450&aspect=true" alt="Refrigerante" />
+      <label><input type="radio" name="bebida" value="Refrigerante" /> Sprite Zero</label>
+    </div>
+    <div class="item">
+      <img src="https://mercantilatacado.vtexassets.com/arquivos/ids/168862/653fe6a745b11bc8543d2958.jpg?v=638342834423170000" alt="Refrigerante" />
+      <label><input type="radio" name="bebida" value="Refrigerante" /> Guarana Zero</label>
+    </div>
+    <div class="item">
+      <img src="https://fortatacadista.vteximg.com.br/arquivos/ids/294006-800-800/7898165420039.jpg?v=637625571580730000" alt="Água" />
+      <label><input type="radio" name="bebida" value="Água" /> Água</label>
+    </div>
+    <button type="button" onclick="nextStep(5)">Próximo ➡️</button>
+  </div>
+
+  <!-- Etapa 6 -->
+  <div class="step" id="step6">
+    <h3>💖 Quase lá!</h3>
+    <div style="text-align:center; margin: 20px 0;">
+      <img src="https://instagram.ffln5-1.fna.fbcdn.net/v/t39.30808-6/471551081_18481181017058714_4733822693081811404_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTgwMC5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=instagram.ffln5-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QGF0WNZZwiibk4Uh6BH9iFKGEEbcwxrXm38kXOjnbuA-8i4OWFqehnCdZO1wV9l5U0&_nc_ohc=AHIlhs_9cVwQ7kNvwEehriE&_nc_gid=XMAuhaG7ZOo4LdfK7Pq1XA&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzMxMTM0MDI5MDQ3MTg1MzA4OQ%3D%3D.3-ccb7-5&oh=00_AfPIbQWTflGjM02jxVQg3GX3geCg8XOpRabNzhh2jTMyfg&oe=68468DA6&_nc_sid=22de04" alt="Foto Nossa" style="max-width: 100%; border-radius: 15px;" />
+    </div>
+    <p style="text-align:center; font-size: 18px; color: #000;">
+      Feliz Dia dos Namorados, amor! Estou ansioso para preparar esse pedido especial para você. 💘
+    </p>
+    <button type="button" onclick="finalizarPedido()">Enviar Pedido 💌</button>
+  </div>
+
+</form>
+
+<a id="whatsappLink" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">Enviar no WhatsApp 💬</a>
+
+<script>
+  function nextStep(current) {
+    document.getElementById('step' + current).classList.remove('active');
+    document.getElementById('step' + (current + 1)).classList.add('active');
+  }
+
+  function mostrarDescricao(radio) {
+    // Esconde todas as descrições
+    document.querySelectorAll('.descricao-sobremesa').forEach(desc => {
+      desc.style.display = 'none';
+    });
+
+    // Mostra a descrição correspondente ao selecionado
+    const valor = radio.value;
+    const desc = document.getElementById('desc-' + valor);
+    if (desc) {
+      desc.style.display = 'block';
+    }
+  }
+
+  function finalizarPedido() {
+    const entrada = document.querySelector('input[name="entrada"]:checked')?.value || 'Nenhuma';
+    const sushis = Array.from(document.querySelectorAll('input[name="sushi"]:checked')).map(el => el.value);
+    const sobremesa = document.querySelector('input[name="sobremesa"]:checked')?.value || 'Nenhuma';
+    const drink = document.querySelector('input[name="drink"]:checked')?.value || 'Nenhum';
+    const bebida = document.querySelector('input[name="bebida"]:checked')?.value || 'Nenhuma';
+
+    const mensagem = `Oi amor ❤️%0A%0A🍜 Entrada: ${entrada}%0A🍣 Sushis:%0A- ${sushis.join('%0A- ')}%0A🍰 Sobremesa: ${sobremesa}%0A🍹 Drink: ${drink}%0A🥤 Bebida: ${bebida}`;
+
+    const numero = "5548991377727"; // substitua pelo seu número
+
+    const link = `https://wa.me/${numero}?text=${mensagem}`;
+
+    const botao = document.getElementById('whatsappLink');
+    botao.href = link;
+    botao.style.display = 'block';
+    botao.scrollIntoView({ behavior: 'smooth' });
+
+    // Oculta o último passo para não mudar depois
+    document.getElementById('step6').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>
