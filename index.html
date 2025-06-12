@@ -253,14 +253,15 @@
     }
   }
 
-  function finalizarPedido() {
+   function finalizarPedido() {
     const entrada = document.querySelector('input[name="entrada"]:checked')?.value || 'Nenhuma';
-    const sushis = Array.from(document.querySelectorAll('input[name="sushi"]:checked')).map(el => el.value);
-    const sobremesa = document.querySelector('input[name="sobremesa"]:checked')?.value || 'Nenhuma';
+
+    const temakis = Array.from(document.querySelectorAll('input[name="Temaki"]:checked')).map(el => el.value);
+    const combinados = document.querySelector('input[name="Combinados"]:checked')?.value || 'Nenhum';
     const drink = document.querySelector('input[name="drink"]:checked')?.value || 'Nenhum';
     const bebida = document.querySelector('input[name="bebida"]:checked')?.value || 'Nenhuma';
 
-    const mensagem = `Oi amor ❤️%0A%0A🍜 Entrada: ${entrada}%0A🍣 Sushis:%0A- ${sushis.join('%0A- ')}%0A🍰 Sobremesa: ${sobremesa}%0A🍹 Drink: ${drink}%0A🥤 Bebida: ${bebida}`;
+    const mensagem = `Oi amor ❤️%0A%0A🍽 Entrada: ${entrada}%0A🍣 Temaki(s): ${temakis.length ? temakis.map(t => `%0A- ${t}`).join('') : '%0ANenhum'}%0A🍱 Combinado: ${combinados}%0A🍹 Drink: ${drink}%0A🥤 Bebida: ${bebida}`;
 
     const numero = "5548991377727"; // substitua pelo seu número
 
@@ -271,7 +272,7 @@
     botao.style.display = 'block';
     botao.scrollIntoView({ behavior: 'smooth' });
 
-    // Oculta o último passo para não mudar depois
+    // Oculta o último passo
     document.getElementById('step6').classList.remove('active');
   }
 </script>
